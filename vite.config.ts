@@ -4,7 +4,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  // o site deve ser servido a partir da raiz "/"
+
   base: "/",
 
   server: {
