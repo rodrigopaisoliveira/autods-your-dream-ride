@@ -16,19 +16,21 @@ const queryClient = new QueryClient();
 // Exemplo: se o site está em https://teu-user.github.io/meu-site
 // então o basename deve ser "/meu-site"
 
+const basename = (import.meta.env.BASE_URL || "/").replace(/\/+$/, "") || "/";
+
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-          <BrowserRouter basename={import.meta.env.BASE_URL}>        
-          <Routes>
+      <BrowserRouter basename={basename}>
+        <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/vehicles" element={<Vehicles />} />
           <Route path="/custom-order" element={<CustomOrder />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
