@@ -12,13 +12,17 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+// ⚙️ Adiciona o basename com base no repositório GitHub Pages
+// Exemplo: se o site está em https://teu-user.github.io/meu-site
+// então o basename deve ser "/meu-site"
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <Routes>
+          <BrowserRouter basename={import.meta.env.BASE_URL}>        
+          <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/vehicles" element={<Vehicles />} />
           <Route path="/custom-order" element={<CustomOrder />} />
